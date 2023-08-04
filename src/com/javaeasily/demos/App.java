@@ -6,7 +6,7 @@ public class App {
         System.out.println(title.toUpperCase());
         System.out.println();
 
-        int amount = -100;
+        int amount = 100;
         int years = 5;
         double interestRate = 10;
 
@@ -18,14 +18,14 @@ public class App {
 
             double interestRateMultiplier = 1 + interestRate / 100;
 
-            double year1AmountDue = amount * interestRateMultiplier;
-            double year2AmountDue = year1AmountDue * interestRateMultiplier;
-            double year3AmountDue = year2AmountDue * interestRateMultiplier;
-            double year4AmountDue = year3AmountDue * interestRateMultiplier;
-            double year5AmountDue = year4AmountDue * interestRateMultiplier;
+            double currentAmountPayable = amount;
+            int currentYear= 1;
+            while (currentYear <= years) {
+                currentAmountPayable =  currentAmountPayable * interestRateMultiplier;
+                currentYear++;
+            }
 
-
-            String totalAmountDue = Double.toString(year5AmountDue);
+            String totalAmountDue = Double.toString(currentAmountPayable);
             int indexOfDecimalPoint = totalAmountDue.indexOf(".");
             String totalAmountDueFormatted = totalAmountDue.substring(0, indexOfDecimalPoint + 3);
             System.out.println("Total Amount Due: " + totalAmountDueFormatted);
